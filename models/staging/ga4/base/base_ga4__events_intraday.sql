@@ -37,6 +37,8 @@ with source as (
     select * from {{ source('ga4_356933181', 'events_intraday') }}
     union all
     select * from {{ source('ga4_356931925', 'events_intraday') }}
+    union all
+    select * from {{ source('ga4_356935471', 'events_intraday') }}
     )
 
 ),
