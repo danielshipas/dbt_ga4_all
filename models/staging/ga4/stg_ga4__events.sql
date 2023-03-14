@@ -2,7 +2,7 @@
   config(
     materialized = 'view',
     database = 'clean-divbrands',
-    dataset = 'clean_ga4_cozislides')
+    dataset = 'clean_ga4')
 }}
 
 -- This staging model contains key creation and window functions. Keeping window functions outside of the base incremental model ensures that the incremental updates don't artificially limit the window partition sizes (ex: if a session spans 2 days, but only 1 day is in the incremental update)

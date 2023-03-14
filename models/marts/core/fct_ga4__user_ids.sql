@@ -2,7 +2,7 @@
   config(
     materialized = 'table',
     database = 'clean-divbrands',
-    dataset = 'clean_ga4_cozislides')
+    dataset = 'clean_ga4')
 }}
 
 

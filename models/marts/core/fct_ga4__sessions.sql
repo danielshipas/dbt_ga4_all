@@ -2,7 +2,7 @@
   config(
     materialized = 'table',
     database = 'clean-divbrands',
-    dataset = 'clean_ga4_cozislides')
+    dataset = 'clean_ga4')
 }}
 
 -- Stay mindful of performance/cost when leavin this model enabled. Making this model incremental on date is not possible because there's no way to create a single record per session AND partition on date. 

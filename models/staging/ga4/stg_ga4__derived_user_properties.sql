@@ -2,7 +2,7 @@
   enabled = true if var('derived_session_properties', false) else false,
   materialized = "table",
   database = 'clean-divbrands',
-  dataset = 'clean_ga4_cozislides'
+  dataset = 'clean_ga4'
 ) }}
 
 -- Remove null user_pseudo_id (users with privacy enabled)

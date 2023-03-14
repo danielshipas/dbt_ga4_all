@@ -2,7 +2,7 @@
   config(
     materialized = 'view',
     database = 'clean-divbrands',
-    dataset = 'clean_ga4_cozislides')
+    dataset = 'clean_ga4')
 }}
 
 with session_events as (
