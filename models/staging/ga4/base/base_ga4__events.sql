@@ -54,12 +54,25 @@ with source as (
         ecommerce,
         items,
     {%  if var('frequency', 'daily') == 'streaming' %}
-        from {{ source('ga4', 'events_intraday') }}
+        from (
+        select * from {{ source('ga4_356933181', 'events') }}
         where cast( _table_suffix as int64) >= {{var('start_date')}}
+        union all
+        select * from {{ source('ga4_356931925', 'events') }}
+        where cast( _table_suffix as int64) >= {{var('start_date')}}
+        )
+
     {% else %}
-        from {{ source('ga4', 'events') }}
+        from (       
+        select * from {{ source('ga4_356933181', 'events_intraday') }}
         where _table_suffix not like '%intraday%'
         and cast( _table_suffix as int64) >= {{var('start_date')}}
+        union all
+        select * from {{ source('ga4_356931925', 'events_intraday') }}
+        where _table_suffix not like '%intraday%'
+        and cast( _table_suffix as int64) >= {{var('start_date')}}
+        )
+
     {% endif %}
     {% if is_incremental() %}
 

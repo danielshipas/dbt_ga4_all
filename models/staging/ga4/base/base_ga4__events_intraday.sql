@@ -33,7 +33,12 @@ with source as (
         platform,
         ecommerce,
         items,
-    from {{ source('ga4', 'events_intraday') }}
+    from (
+    select * from {{ source('ga4_356933181', 'events_intraday') }}
+    union all
+    select * from {{ source('ga4_356931925', 'events_intraday') }}
+    )
+
 ),
 renamed as (
     select 

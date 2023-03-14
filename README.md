@@ -275,3 +275,8 @@ Package users can override this macro and implement their own channel groupings 
 - Implement your custom logic within that macro. It may be easiest to first copy the code from the package macro and modify from there.
 
 Overriding the package's default channel mapping makes use of dbt's dispatch override capability documented here: https://docs.getdbt.com/reference/dbt-jinja-functions/dispatch#overriding-package-macros
+
+#Modifications by daniel
+- Added config in each model to create table in clean div
+- In base folder I added union in both base models
+- In src_ga4 instead of the variables that are going to be defined in dbt_profile.yml I putted the origin
