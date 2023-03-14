@@ -280,3 +280,4 @@ Overriding the package's default channel mapping makes use of dbt's dispatch ove
 - Added config in each model to create table in clean div
 - In base folder I added union in both base models
 - In src_ga4 instead of the variables that are going to be defined in dbt_profile.yml I putted the origin
+- I deleted base_ga4__events_intraday, because I was receiving errors and in lineage was not being used

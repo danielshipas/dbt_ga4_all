@@ -68,16 +68,16 @@ with source as (
 
     {% else %}
         from (       
-        select * from {{ source('ga4_356933181', 'events_intraday') }}
-        where _table_suffix not like '%intraday%'
+        select *,_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_356933181', 'events_intraday') }}
+        where TABLE_SUFFIX_2 not like '%intraday%'
         and cast( _table_suffix as int64) >= 20230101
         union all
-        select * from {{ source('ga4_356931925', 'events_intraday') }}
-        where _table_suffix not like '%intraday%'
+        select *,_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_356931925', 'events_intraday') }}
+        where TABLE_SUFFIX_2 not like '%intraday%'
         and cast( _table_suffix as int64) >= 20230101
         union all
-        select * from {{ source('ga4_356935471', 'events_intraday') }}
-        where _table_suffix not like '%intraday%'
+        select *,_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_356935471', 'events_intraday') }}
+        where TABLE_SUFFIX_2 not like '%intraday%'
         and cast( _table_suffix as int64) >= 20230101
         )
 
@@ -85,11 +85,15 @@ with source as (
     {% if is_incremental() %}
 
         {% if var('static_incremental_days', false ) %}
-            and parse_date('%Y%m%d', _TABLE_SUFFIX) in ({{ partitions_to_replace | join(',') }})
+            where parse_date('%Y%m%d', _TABLE_SUFFIX) in ({{ partitions_to_replace | join(',') }})
         {% else %}
             -- Incrementally add new events. Filters on _TABLE_SUFFIX using the max event_date_dt value found in {{this}}
             -- See https://docs.getdbt.com/reference/resource-configs/bigquery-configs#the-insert_overwrite-strategy
-            and parse_date('%Y%m%d',_TABLE_SUFFIX) >= _dbt_max_partition
+            WHERE parse_date('%Y%m%d',TABLE_SUFFIX_2) >= _dbt_max_partition
+
+            ------
+            ---- TABLE_SUFFIX_2 added by me
+            ------
         {% endif %}
     {% endif %}
 ),

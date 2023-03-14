@@ -2,7 +2,7 @@
   config(
     materialized = 'table',
     database = 'clean-divbrands',
-    dataset = 'clean_ga4_cozislides')
+    dataset = 'clean_ga4')
 }}
 
 -- Dimension table for sessions based on the first event that isn't session_start or first_visit.
