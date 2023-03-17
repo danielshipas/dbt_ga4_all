@@ -1,8 +1,11 @@
 {{
   config(
-      enabled = false,
+      enabled = true,
+      database = 'clean-divbrands',
+      dataset = 'clean_ga4'
   )
 }}
+
  with add_shipping_info_with_params as (
    select *,
       {{ ga4.unnest_key('event_params', 'coupon') }},

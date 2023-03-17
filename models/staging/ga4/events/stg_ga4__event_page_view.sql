@@ -1,3 +1,11 @@
+{{
+  config(
+      enabled = true,
+      database = 'clean-divbrands',
+      dataset = 'clean_ga4'
+  )
+}}
+
  with page_view_with_params as (
    select *,
       {{ ga4.unnest_key('event_params', 'entrances',  'int_value') }},

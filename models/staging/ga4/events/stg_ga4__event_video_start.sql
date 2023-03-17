@@ -1,3 +1,11 @@
+{{
+  config(
+      enabled = true,
+      database = 'clean-divbrands',
+      dataset = 'clean_ga4'
+  )
+}}
+
 -- Defined as when the video starts playing. For embedded YouTube videos that have JS API support enabled. Collected by default via enhanced measurement.
 -- More info: https://support.google.com/firebase/answer/9234069?hl=en
  

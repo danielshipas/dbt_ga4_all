@@ -1,3 +1,11 @@
+{{
+  config(
+      enabled = true,
+      database = 'clean-divbrands',
+      dataset = 'clean_ga4'
+  )
+}}
+
  with scroll_with_params as (
    select *,
       {{ ga4.unnest_key('event_params', 'percent_scrolled', 'int_value') }}

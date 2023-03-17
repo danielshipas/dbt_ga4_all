@@ -1,3 +1,11 @@
+{{
+  config(
+      enabled = true,
+      database = 'clean-divbrands',
+      dataset = 'clean_ga4'
+  )
+}}
+
 -- TODO: Unclear why there are first_visit events firing when the ga_session_number is >1. This might cause confusion.
 
 with first_visit_with_params as (

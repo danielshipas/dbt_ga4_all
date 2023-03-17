@@ -1,6 +1,8 @@
 {{
   config(
-      enabled = false,
+      enabled = true,
+      database = 'clean-divbrands',
+      dataset = 'clean_ga4'
   )
 }}
 with refund_with_params as (

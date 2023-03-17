@@ -1,6 +1,8 @@
 {{
   config(
-      enabled = false,
+      enabled = true,
+      database = 'clean-divbrands',
+      dataset = 'clean_ga4'
   )
 }}
 

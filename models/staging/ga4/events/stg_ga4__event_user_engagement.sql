@@ -1,3 +1,11 @@
+{{
+  config(
+      enabled = true,
+      database = 'clean-divbrands',
+      dataset = 'clean_ga4'
+  )
+}}
+
 -- Event defined as "when the app is in the foreground or webpage is in focus for at least one second."
  
  with user_engagement_with_params as (

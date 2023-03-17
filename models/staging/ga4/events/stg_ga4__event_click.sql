@@ -1,3 +1,11 @@
+{{
+  config(
+      enabled = true,
+      database = 'clean-divbrands',
+      dataset = 'clean_ga4'
+  )
+}}
+
 -- reference here: https://support.google.com/analytics/answer/9216061?hl=en 
  
  with click_with_params as (
