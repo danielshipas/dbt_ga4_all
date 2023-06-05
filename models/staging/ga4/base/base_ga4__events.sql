@@ -90,6 +90,7 @@ with source as (
         select *,_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_375649600', 'events') }}
         where _table_suffix not like '%intraday%'
         and cast( _table_suffix as int64) >= 20230101
+        union all
         select *,_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_371025330', 'events') }}
         where _table_suffix not like '%intraday%'
         and cast( _table_suffix as int64) >= 20230101
