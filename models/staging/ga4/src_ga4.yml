@@ -55,3 +55,14 @@ sources:
       - name: events_intraday
         identifier: events_intraday_*
         description: Intraday events table which is optionally exported by GA4. Always contains events from the current day.
+
+  - name: ga4_353242281
+    database: "ga-bigquery-294400" 
+    schema: analytics_353242281
+    tables:
+      - name: events
+        identifier: events_* # Scan across all sharded event tables. Use the 'start_date' variable to limit this scan
+        description: Main events table exported by GA4. Sharded by date. 
+      - name: events_intraday
+        identifier: events_intraday_*
+        description: Intraday events table which is optionally exported by GA4. Always contains events from the current day.
