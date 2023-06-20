@@ -69,6 +69,9 @@ with source as (
         union all
         select * from {{ source('ga4_371025330', 'events_intraday') }}
         where cast( _table_suffix as int64) >= 20230101
+        union all
+        select * from {{ source('ga4_353242281', 'events_intraday') }}
+        where cast( _table_suffix as int64) >= 20230101
 
 
         )
@@ -94,7 +97,10 @@ with source as (
         select *,_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_371025330', 'events') }}
         where _table_suffix not like '%intraday%'
         and cast( _table_suffix as int64) >= 20230101
-
+        union all
+        select *,_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_353242281', 'events') }}
+        where _table_suffix not like '%intraday%'
+        and cast( _table_suffix as int64) >= 20230101
         )
 
     {% endif %}
