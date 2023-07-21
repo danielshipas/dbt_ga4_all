@@ -78,11 +78,11 @@ with source as (
 
     {% else %}
         from (       
-        select *,_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_356933181', 'events') }}
+        select * except(is_active_user),_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_356933181', 'events') }}
         where _table_suffix not like '%intraday%'
         and cast( _table_suffix as int64) >= 20230101
         union all
-        select *,_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_356931925', 'events') }}
+        select * except(is_active_user),_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_356931925', 'events') }}
         where _table_suffix not like '%intraday%'
         and cast( _table_suffix as int64) >= 20230101
         union all
@@ -90,15 +90,15 @@ with source as (
         where _table_suffix not like '%intraday%'
         and cast( _table_suffix as int64) >= 20230101
         union all
-        select *,_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_375649600', 'events') }}
+        select * except(is_active_user),_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_375649600', 'events') }}
         where _table_suffix not like '%intraday%'
         and cast( _table_suffix as int64) >= 20230101
         union all
-        select *,_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_371025330', 'events') }}
+        select * except(is_active_user),_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_371025330', 'events') }}
         where _table_suffix not like '%intraday%'
         and cast( _table_suffix as int64) >= 20230101
         union all
-        select *,_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_353242281', 'events') }}
+        select * except(is_active_user),_table_suffix as TABLE_SUFFIX_2 from {{ source('ga4_353242281', 'events') }}
         where _table_suffix not like '%intraday%'
         and cast( _table_suffix as int64) >= 20230101
         )
