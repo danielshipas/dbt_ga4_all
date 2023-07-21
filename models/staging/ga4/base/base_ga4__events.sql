@@ -61,7 +61,7 @@ with source as (
         select * except(is_active_user) from {{ source('ga4_356931925', 'events_intraday') }}
         where cast( _table_suffix as int64) >= 20230101
         union all
-        select * from {{ source('ga4_356935471', 'events_intraday') }}
+        select * except(is_active_user) from {{ source('ga4_356935471', 'events_intraday') }}
         where cast( _table_suffix as int64) >= 20230101
         union all
         select * except(is_active_user) from {{ source('ga4_375649600', 'events_intraday') }}
